@@ -54,17 +54,17 @@ const menuList = [
     {
         title: '表单',
         type: 'desktop',
-        key: '/form',
+        key: '/admin/form',
         children: [
             {
                 title: '登录',
                 type: 'desktop',
-                key: '/form/login',
+                key: '/admin/form/login',
             },
             {
                 title: '注册',
                 type: 'desktop',
-                key: '/form/reg',
+                key: '/admin/form/reg',
             }
         ]
     },

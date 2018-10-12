@@ -11,6 +11,8 @@ import Messages from "./pages/ui/Messages";
 import Tabs from "./pages/ui/Tabs";
 import Carousels from "./pages/ui/Carousels";
 import Gallery from "./pages/ui/Gallery";
+import FormLogin from "./pages/form/login"
+import FormRegister from "./pages/form/register"
 
 export default class Router extends React.Component {
 
@@ -30,6 +32,8 @@ export default class Router extends React.Component {
                             <Route path="/admin/ui/tabs" component={Tabs}></Route>
                             <Route path="/admin/ui/carousel" component={Carousels}></Route>
                             <Route path="/admin/ui/gallery" component={Gallery}></Route>
+                            <Route path="/admin/form/login" component={FormLogin}></Route>
+                            <Route path="/admin/form/reg" component={FormRegister}></Route>
                         </Admin>
                     }></Route>
                 </App>
