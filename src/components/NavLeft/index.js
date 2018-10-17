@@ -4,9 +4,29 @@ import "./index.less";
 import MenuConfig from './../../config/menuConfig'
 import "antd/dist/antd.css";
 import NavLink from "react-router-dom/es/NavLink";
+import {connect} from 'react-redux'
+import {switchMenu} from './../../redux/action'
 
 const SubMenu = Menu.SubMenu;
-export default class NavLeft extends React.Component {
+
+class NavLeft extends React.Component {
+    state = {
+        currentKey: ''
+    }
+    // 菜单点击
+    handleClick = ({item, key}) => {
+        if (key == this.state.currentKey) {
+            return false;
+        }
+        // 事件派发，自动调用reducer，通过reducer保存到store对象中
+        const {dispatch} = this.props;
+        dispatch(switchMenu(item.props.title));
+
+        this.setState({
+            currentKey: key
+        });
+        // hashHistory.push(key);
+    };
 
     componentWillMount() {
         const menuTreeNode = this.renderMenu(MenuConfig);
@@ -76,6 +96,7 @@ export default class NavLeft extends React.Component {
                     <h1>Fast MS</h1>
                 </div>
                 <Menu
+                    onClick={this.handleClick}
                     defaultSelectedKeys={['/admin/ui/buttons']}
                     defaultOpenKeys={['/admin/ui/buttons']}
                     mode={this.state.mode}
@@ -87,3 +108,5 @@ export default class NavLeft extends React.Component {
             </div>);
     }
 }
+
+export default connect()(NavLeft)
